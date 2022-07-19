@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Tap</title>
+  
+  <style>
+  @font-face {
+    font-family: milk;
+    src: url('cookies.ttf');
+  }
+    body {
+      background-color: rgb(206, 214, 224);
+    }
+    
+   #t {
+     color: white;
+     font-family: milk;
+     font-size: 38px;
+   }
+   
+   div {
+     text-align: center;
+     margin-top: 50%;
+   }
+   
+   button {
+     background-color: lavender;
+     border-style: solid;
+     border-color: #171717;
+     padding-top: 20px;
+     padding-bottom: 20px;
+     padding-right: 50px;
+     padding-left: 50px;
+     border-radius: 10px;
+   }
+  </style>
+</head>
+<body>
+  <div>
+  <p id='t'>Love Tap</p>
+  <button onclick="play()">Play</button>
+  </div>
+  
+  <script type="text/javascript">
+    function play() {
+      location.replace('main.html')
+    }
+  </script>
+</body>
+</html>

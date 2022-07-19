@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Love Tap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    @font-face {
+      font-family: milk;
+      src: url('cookies.ttf');
+    }
+    div {
+      background-color: lightpink;
+      width: 90px;
+      height: 60px;
+      border-radius: 5px;
+      color: white;
+      text-align: center;
+    }
+
+    #scx {
+      font-size: 22px;
+      margin-left: 33%;
+    }
+
+    .score {
+      font-family: milk;
+      margin-left: 10px;
+      font-size: 25px;
+      display: inline-block;
+    }
+
+    .hsm {
+      font-family: milk;
+      font-size: 20px;
+      display: inline-block;
+      color: red;
+      margin-left: 20%;
+    }
+
+    .score, #scc {
+      color: green;
+    }
+
+    #scx {
+      color: red;
+    }
+
+    #num {
+      font-family: Verdana;
+      color: #171717;
+    }
+
+    #dvx {
+      color: white;
+      padding-top: 20%;
+    }
+
+    body {
+      background-color: rgb(206, 214, 224);
+    }
+  </style>
+</head>
+<body>
+
+  <audio id='click'>
+    <source src="clicks.mp3" type="audio/mpeg">
+  </audio>
+
+  <p class='score' id='sc'>
+    Score: 
+  </p>
+
+  <p class='hsm' id='hsm'>
+  </p>
+
+  <script type="text/javascript">
+
+    let mainV = true
+
+    const hsg = localStorage.getItem('highscore')
+    let hssm = document.getElementById('hsm')
+
+    if (!hsg) {
+      localStorage.setItem('highscore', 0)
+    } else {
+      let hsa = localStorage.getItem('highscore')
+      hssm.innerHTML = `High Score: <span id='num'>${hsa}</span>`
+    }
+
+    let sc = 0;
+    let vl = true;
+    let sp = 910
+    let ssp = 1100
+
+    function iv() {
+      let aud = document.getElementById('click')
+      let scc = document.getElementById('sc')
+      let nn = document.querySelectorAll('div')
+      nn.forEach(n => {
+        n.addEventListener('click', e => {
+          aud.play()
+          sc++
+          sp -= 10
+          ssp -= 5
+          scc.innerHTML = `Score: <span id='num'>${sc}</span>`
+          n.remove()
+          vl = false
+        })
+      })
+    }
+
+    function main() {
+      let x = Math.floor((Math.random() * 555) + 1)
+      let y = Math.floor((Math.random() * 235) + 1)
+      vl = true
+
+      let id = Date.now()
+      let nd = document.createElement('div')
+      nd.setAttribute('id', id)
+      nd.innerHTML = `<p id='dvx'>Here</p>`
+      nd.style.marginTop = `${x}px`
+      nd.style.marginLeft = `${y}px`
+      document.body.appendChild(nd)
+      let nx = document.getElementById(id)
+
+      let st = setTimeout(e => {
+        if (vl == true) {
+          let hsS = localStorage.getItem('highscore')
+          if (sc > hsS) {
+            localStorage.setItem('highscore', sc)
+            alert('You Lose! New High Score! :)')
+          }
+          nx.remove()
+          if (sc < hsS) {
+            alert('You Lose! :(')
+          }
+          clearInterval(mxm)
+          clearInterval(wxm)
+          location.replace('submain.html')
+        }
+      },
+        sp)
+    }
+
+   let mxm = setInterval(main, ssp)
+   let wxm = setInterval(iv, ssp) 
+
+    </script>
+  </body>
+</html>
